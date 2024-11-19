@@ -6,23 +6,56 @@ struct Node{
     struct Node* right;
 };
 
-void createrNode(struct Node* ptr, int value){
+void preOrder(struct Node *root){
+    if (root != NULL) {
+        printf("%d ", root->data);
+        preOrder(root->left);
+        preOrder(root->right);
+    }
+    
+}
+
+void postOrder(struct Node *root){
+    if (root == NULL) {
+        return;
+    }
+    preOrder(root->left);
+    preOrder(root->right);
+    printf("%d ", root->data);
+}
+
+void inOrder(struct Node *root){
+    if (root == NULL) {
+        return;
+    }
+    preOrder(root->left);
+    printf("%d ", root->data);
+    preOrder(root->right);
+}
+struct Node* createrNode(struct Node* ptr, int value){
     ptr = (struct Node* )malloc(sizeof(struct Node));
     ptr->data = value;
     ptr->left = NULL;
     ptr->right = NULL;
+    return ptr;
 }
 int main(){
-    struct Node* root;
-    struct Node* second;
-    struct Node* third;
-    root = (struct Node* )malloc(sizeof(struct Node));
+    struct Node* root = (struct Node* )malloc(sizeof(struct Node));
+    struct Node* second = createrNode(second, 23);
+    struct Node* third = createrNode(third, 234);
+    
     root->data = 12;
     root->left = second;
     root->right = third;
 
-    createrNode(second, 23);
-    createrNode(third, 234);
+    printf("pre order\n");
+    preOrder(root);
+
+    printf("\npost order\n");
+    postOrder(root);
+
+    printf("\nin order\n");
+    inOrder(root);
 
     return 0;
 }

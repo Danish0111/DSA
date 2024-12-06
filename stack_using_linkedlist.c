@@ -12,7 +12,9 @@ void displayStack(struct Node *ptr){
     
     while (ptr != NULL)
     {
-        printf("|_%d_|\n", ptr->data);
+        printf("|        |\n");
+        printf("|   %d   |\n", ptr->data);
+        printf("|________|\n");
         ptr = ptr->next;
     }
     printf("\n");

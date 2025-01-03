@@ -88,9 +88,10 @@ int peek(struct stack *ptr){
     printf("Enter position you wank to peek: ");
     scanf("%d",&i);
     
-    if ((ptr->top - i + 1) <= 0)
+    if ((ptr->top - i + 1) >= 0)
     {
         printf("enter a valid position\n");
+        return i;
     }
     else{
         return ptr->arr[ptr->top-i+1];
@@ -100,7 +101,7 @@ int main(){
     struct stack *s = (struct stack *)malloc(sizeof(struct stack));
     s->size = 6;
     s->top = -1;
-    s->arr = (int *) malloc(s->size*sizeof(int));
+    s->arr = (int *) malloc(s->size*sizeof(int)); 
 
     s->top++;
     s->arr[s->top] = 1;
@@ -110,11 +111,11 @@ int main(){
     s->arr[s->top] = 3;
     s->top++;
     s->arr[s->top] = 4;
-    push(s);
+    // push(s);
     // printStack(s);
     // printf("%d is poped from the stack\n", pop(s));
     // printStack(s);
-    // printf("element is %d", peek(s));
+    printf("element is %d", peek(s));
 
     return 0;
 }
